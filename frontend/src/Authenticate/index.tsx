@@ -4,11 +4,11 @@ import View from "../ui-components/View";
 
 const Authenticate = ({ children }: any) => {
   const { location, replaceLocation } = useLocation();
-  const { pathname, search } = location;
+  const { origin, pathname } = location;
   const [isAuth, setIsAtuh] = useState(false);
 
   useEffect(() => {
-    if (location.origin) {
+    if (origin) {
       if (pathname === "/login" || pathname === "/signup") {
         replaceLocation(pathname, "", { pathname: "/dashboard" });
       } else {
@@ -16,7 +16,7 @@ const Authenticate = ({ children }: any) => {
       }
       setIsAtuh(true);
     }
-  }, [location.origin]);
+  }, []);
 
   if (isAuth) {
     return children;

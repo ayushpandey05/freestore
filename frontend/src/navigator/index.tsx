@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "../context/Location";
+import useUniqueId from "../hooks/useUniqueId";
 import View from "../ui-components/View";
 import { CreateNavigatorProps, NavigatorProps } from "./index.type";
 import RenderPage from "./RenderPage";
@@ -8,6 +9,8 @@ const Navigator: React.FC<NavigatorProps> = ({
   pages,
   pageNotFound: PageNotFound,
 }) => {
+  const uniqueId = useUniqueId();
+
   const { location } = useLocation();
   const { pathname } = location;
   useEffect(() => {}, [pathname]);
@@ -17,9 +20,19 @@ const Navigator: React.FC<NavigatorProps> = ({
   return (
     <View style={{ flex: 1 }}>
       {pages?.map((item, index) => {
-        return <RenderPage path={item.path} component={item.component} />;
+        return (
+          <RenderPage
+            key={`${uniqueId}-${index}`}
+            path={item.path}
+            component={item.component}
+          />
+        );
       })}
-      {pageIndex === -1 ? <PageNotFound /> : void 0}
+      {pageIndex === -1 ? (
+        <PageNotFound key={`${uniqueId}-not-found`} />
+      ) : (
+        void 0
+      )}
     </View>
   );
 };

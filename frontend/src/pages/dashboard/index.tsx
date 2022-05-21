@@ -1,11 +1,8 @@
-import { useLocation } from "../../context/Location";
 import Link from "../../ui-components/Link";
 import Text from "../../ui-components/Text";
 import View from "../../ui-components/View";
 
 const Dashboard = () => {
-  const { location } = useLocation();
-  const { state } = location;
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text>Dashboard page</Text>

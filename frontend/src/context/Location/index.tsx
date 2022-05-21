@@ -79,7 +79,7 @@ const LocationProvider = ({ children }: any) => {
 
   return (
     <Context.Provider value={{ location, changeLocation, replaceLocation }}>
-      {children || void 0}
+      {location?.origin && children ? children : void 0}
     </Context.Provider>
   );
 };

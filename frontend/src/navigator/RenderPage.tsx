@@ -16,7 +16,7 @@ const RenderPage: React.FC<Props> = ({ path, component: Component }) => {
     if (pathname === path) {
       setMounted(true);
     }
-  }, [pathname]);
+  }, [pathname, path]);
 
   const display = pathname === path ? "flex" : "none";
 

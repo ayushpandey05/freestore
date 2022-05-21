@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useLocation } from "../../context/Location";
 import Link from "../../ui-components/Link";
 import Text from "../../ui-components/Text";
